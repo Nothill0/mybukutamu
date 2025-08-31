@@ -1,68 +1,56 @@
-# CodeIgniter 4 Application Starter
+MyBukutamu
+MyBukutamu adalah aplikasi buku tamu digital yang dibangun dengan framework PHP CodeIgniter 4. Aplikasi ini memudahkan pencatatan tamu yang berkunjung, lengkap dengan fitur persetujuan dan rekapitulasi data.
 
-## What is CodeIgniter?
+Aplikasi yang Dibutuhkan
+Untuk menjalankan aplikasi ini, pastikan Anda telah menginstal beberapa aplikasi dasar berikut:
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Web Server: XAMPP, Laragon, atau WAMPP (disarankan menggunakan salah satu yang sudah terintegrasi).
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Database Server: MySQL/MariaDB (biasanya sudah termasuk dalam paket XAMPP/Laragon).
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Composer: Alat manajemen dependensi untuk PHP.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+Git: Untuk mengelola versi kode.
 
-## Installation & updates
+Cara Pemasangan dan Menjalankan Program
+Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini di lingkungan lokal Anda.
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+1. Kloning Repositori
+Buka terminal atau Command Prompt, lalu klon repositori ini ke folder htdocs (untuk XAMPP) atau folder proyek server web lokal Anda.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+git clone [URL_REPOSITORI_ANDA]
 
-## Setup
+2. Instalasi Dependensi
+Masuk ke dalam folder proyek yang baru saja Anda klon, lalu jalankan perintah Composer untuk menginstal semua dependensi yang diperlukan.
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+cd MyBukutamu
+composer install
 
-## Important Change with index.php
+3. Konfigurasi Database
+Buat database baru di phpMyAdmin atau SQLyog dengan nama mybukutamu.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Setelah itu, salin file .env.example menjadi file .env di root folder proyek, lalu edit file .env untuk mengatur konfigurasi database Anda.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+# .env
 
-**Please** read the user guide for a better explanation of how CI4 works!
+database.default.hostname = localhost
+database.default.database = mybukutamu
+database.default.username = root
+database.default.password =
+database.default.DBDriver = MySQLi
 
-## Repository Management
+Pastikan Anda mengubah username dan password sesuai dengan konfigurasi database Anda.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+4. Migrasi Database
+Jalankan migrasi untuk membuat tabel yang diperlukan secara otomatis.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+php spark migrate
 
-## Server Requirements
+5. Jalankan Aplikasi
+Jalankan server pengembangan CodeIgniter 4 dengan perintah berikut:
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+php spark serve
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Aplikasi akan berjalan di http://localhost:8080 (atau port lain jika sudah digunakan). Buka URL tersebut di browser Anda untuk mulai menggunakan aplikasi.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Selamat, sekarang Anda sudah berhasil menjalankan aplikasi MyBukutamu!
