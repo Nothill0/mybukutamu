@@ -29,6 +29,7 @@ composer install
 
 3. Konfigurasi Database
 Buat database baru di phpMyAdmin atau SQLyog dengan nama mybukutamu.
+#note : database mysql (mybukutamu) ada fi folder file database
 
 Setelah itu, salin file .env.example menjadi file .env di root folder proyek, lalu edit file .env untuk mengatur konfigurasi database Anda.
 
